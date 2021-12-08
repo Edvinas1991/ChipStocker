@@ -1,5 +1,6 @@
 package lt.codeacademy.chipstockerapi.advice;
 
+import lt.codeacademy.chipstockerapi.exception.FileException;
 import lt.codeacademy.chipstockerapi.exception.ItemNotFoundException;
 import lt.codeacademy.chipstockerapi.exception.data.ExceptionResponse;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -21,5 +22,11 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ExceptionResponse handlingEmptyResult(EmptyResultDataAccessException exception) {
         return new ExceptionResponse(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(FileException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ExceptionResponse handlingFileException(FileException exception) {
+        return new ExceptionResponse(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 }

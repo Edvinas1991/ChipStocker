@@ -52,10 +52,4 @@ public class ItemController {
         return itemService.findItems(query);
     }
 
-
-
-
-
-
-
 }

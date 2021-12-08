@@ -8,9 +8,7 @@ import lt.codeacademy.chipstockerapi.entity.Item;
 import lt.codeacademy.chipstockerapi.exception.ItemNotFoundException;
 import lt.codeacademy.chipstockerapi.repository.ItemRepository;
 import org.springframework.stereotype.Service;
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Service
