@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ChipStocker.iml" filepath="$PROJECT_DIR$/.idea/ChipStocker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ChipStocker-Api/ChipStocker-Api.iml" filepath="$PROJECT_DIR$/ChipStocker-Api/ChipStocker-Api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ChipStocker-Api/chipStocker-Api.iml" filepath="$PROJECT_DIR$/ChipStocker-Api/chipStocker-Api.iml" />
     </modules>
   </component>
 </project>
