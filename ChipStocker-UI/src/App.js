@@ -1,7 +1,9 @@
+import Product from "./component/Product";
+
 function App() {
   return (
-      <div>testas</div>
-  );
+      <Product/>
+  )
 }
 
 export default App;
