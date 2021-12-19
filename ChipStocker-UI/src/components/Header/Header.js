@@ -15,6 +15,7 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
+import LanguageSwitcher from "../../languageSwitcher/LanguageSwitcher";
 
 export default ()=>{
    const [anchorEl, setAnchorEl] = React.useState(null);
@@ -120,7 +121,9 @@ export default ()=>{
                 </ListItemIcon>
                 Logout
              </MenuItem>
+             <LanguageSwitcher/>
           </Menu>
+
        </AppBar>
 
    )
