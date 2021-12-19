@@ -5,7 +5,7 @@ import Product from "../forms/Product";
 import {Route, Routes} from "react-router-dom";
 import Products from "../../page/Products";
 import RegistrationForm from "../forms/RegistrationForm";
-import {Box, Paper} from "@mui/material";
+
 
 
 export default () => {
