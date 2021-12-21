@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(ROOT + ITEMS)
+@RequestMapping(ITEMS)
 public class ItemController {
     private final ItemService itemService;
 

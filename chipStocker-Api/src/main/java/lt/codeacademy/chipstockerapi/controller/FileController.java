@@ -12,7 +12,7 @@ import static lt.codeacademy.chipstockerapi.ApiPath.*;
 
 
 @RestController
-@RequestMapping(ROOT + FILES)
+@RequestMapping(FILES)
 
 public class FileController {
     private final FileService fileService;
