@@ -1,6 +1,7 @@
 package lt.codeacademy.chipstockerapi.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
@@ -19,6 +20,7 @@ public class Role implements GrantedAuthority {
     @Type(type = "uuid-char")
     private UUID id;
     @Setter
+    @Getter
     private String name;
 
     @Override
