@@ -5,6 +5,7 @@ import Product from "../forms/Product";
 import {Route, Routes} from "react-router-dom";
 import Products from "../../page/Products";
 import RegistrationForm from "../forms/RegistrationForm";
+import Login from "../forms/Login";
 
 
 
@@ -21,6 +22,7 @@ export default () => {
                     <Route path="/" element={<Products/>}/>
                     <Route path="/products/create" element={<Product/>} />
                     <Route path="/users/registration" element={<RegistrationForm/>}/>
+                    <Route path="/login" element={<Login/>}/>
                 </Routes>
 
             </div>
