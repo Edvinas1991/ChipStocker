@@ -7,10 +7,7 @@ public interface ApiPath {
     String POSTS = "/posts";
     String POST = "/{" + ID_VARIABLE + "}";
 
-    String ITEMS = "/products";
-    String ITEM = "/{" + ID_VARIABLE + "}";
-    String SEARCH = "/search";
-    String FILES = "/files";
-    String FILE_BY_NAME = "/{" + NAME_VARIABLE + "}";
+    String COMMENTS = "/comments";
+    String COMMENT = "/{" + ID_VARIABLE + "}";
     String LOGIN = "/login";
 }

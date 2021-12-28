@@ -6,7 +6,6 @@ import lt.codeacademy.chipstockerapi.service.PostService;
 import org.springframework.http.HttpStatus;
 import static org.springframework.http.MediaType.*;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.UUID;
 
