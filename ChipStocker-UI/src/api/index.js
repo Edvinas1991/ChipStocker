@@ -7,7 +7,6 @@ const HTTP = axios.create({
 
 HTTP.interceptors.request.use(config => {
    const token = store.getState().user.jwtToken;
-   console.log('token '+ token);
 
    if (token) {
       config.headers.authorization = 'Bearer ' + token;

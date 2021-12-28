@@ -12,6 +12,7 @@ import {Container} from "@mui/material";
 import Contact from "../../page/Contact";
 import About from "../../page/About";
 import PostForm from "../forms/PostForm";
+import Post from "../../page/Post";
 
 
 export default () => {
@@ -26,9 +27,10 @@ export default () => {
                     <Routes>
                         <Route path="/" element={<Posts/>}/>
                         <Route path="/createpost" element={<PostForm/>}/>
-
                         <Route path="/contact" element={<Contact/>}/>
                         <Route path="/about" element={<About/>}/>
+                        <Route path="/post/:postId" element={<Post/>}/>
+
 
                         {/*<Route path="/products/create" element={<SecuredRoute/>}>*/}
                         {/*    <Route path="/products/create" element={<Product/>}/>*/}

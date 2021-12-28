@@ -41,7 +41,7 @@ export default function NestedList() {
                 </ListItemText>
                 <Divider />
 
-                <ListItemButton component={NavLink} to="/products">
+                <ListItemButton component={NavLink} to="/">
                     <ListItemIcon>
                         <HomeIcon style={{ color: "white" }}/>
                     </ListItemIcon>

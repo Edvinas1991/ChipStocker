@@ -1,84 +1,69 @@
 import {useEffect, useState} from "react";
-import {getProducts} from "../api/productApi";
-import {Box, Container} from "@mui/material";
+import {getPosts} from "../api/postApi";
+import {Box, CircularProgress, Container, Pagination} from "@mui/material";
 import {useDispatch} from "react-redux";
 import {useTranslation} from "react-i18next";
-
+import Link from "@mui/material/Link";
+import {NavLink} from "react-router-dom";
 
 
 const Posts = () => {
-    const [products, setProducts] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const [pageSize, setPageSize] = useState();
     const dispatcher = useDispatch();
+
 
 
     const {t} = useTranslation();
 
     useEffect(() => {
-        getProducts()
-            .then(({data}) => setProducts(data))
+        getPosts()
+            .then(({data}) => setPosts(data))
             .catch((error) => console.log(error))
-            .finally(() => setLoading(false));
+            .finally(() => {
+                setLoading(false);
+                console.log(posts.length)
+
+            });
+
     }, []);
 
     return (
         <>
-
             <Container maxWidth="md" sx={{my: 2}}>
-<Box sx={{bgcolor: 'white',maxHeight: '300px'}}>
+                {
+                    loading ?
+                        <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                            <CircularProgress/>
+                        </Box>
+                        :
+                        <div>
 
-      products
-</Box>
 
+                            {
 
-                {/*{*/}
-                {/*    loading ?*/}
-                {/*        <Box sx={{display: 'flex', justifyContent: 'center'}}>*/}
-                {/*            <CircularProgress/>*/}
-                {/*        </Box>*/}
-                {/*        :*/}
-                {/*        <TableContainer component={Paper}>*/}
-                {/*            <Table sx={{minWidth: 100}} aria-label="simple table">*/}
-                {/*                <TableHead>*/}
-                {/*                    <TableRow>*/}
-                {/*                        <TableCell>{t('name')}</TableCell>*/}
-                {/*                        <TableCell align="right">Category</TableCell>*/}
-                {/*                        <TableCell align="right">Description</TableCell>*/}
-                {/*                        <TableCell align="right">Quantity</TableCell>*/}
-                {/*                        <TableCell align="right">Price</TableCell>*/}
-                {/*                        <TableCell></TableCell>*/}
-                {/*                    </TableRow>*/}
-                {/*                </TableHead>*/}
-                {/*                <TableBody>*/}
-                {/*                    {products.map((product) => (*/}
-                {/*                        <TableRow*/}
-                {/*                            key={product.id}*/}
-                {/*                            sx={{'&:last-child td, &:last-child th': {border: 0}}}*/}
-                {/*                        >*/}
-                {/*                            <TableCell component="th" scope="row">*/}
-                {/*                                {product.name}*/}
-                {/*                            </TableCell>*/}
-                {/*                            <TableCell align="right">{product.category}</TableCell>*/}
-                {/*                            <TableCell align="right">{product.description}</TableCell>*/}
-                {/*                            <TableCell align="right">{product.quantity}</TableCell>*/}
-                {/*                            <TableCell align="right">{product.price}</TableCell>*/}
-                {/*                            <TableCell>*/}
-                {/*                                <Button variant="outlined" > /!*onlick*!/*/}
+                                posts.map((post) => (
+                                    <>
+                                        <Link component={NavLink} to={"/post/" + post.id}>
+                                            <h3>{post.title}</h3>
+                                        </Link>
+                                        By {post.author} {post.date}
+                                        <Box sx={{mt: "5px"}}>{post.body}</Box>
+                                    </>
+                                ))}
+                        </div>
 
-                {/*                                    <AddShoppingCartIcon/>*/}
-                {/*                                </Button>*/}
-                {/*                            </TableCell>*/}
-                {/*                        </TableRow>*/}
-                {/*                    ))}*/}
-                {/*                </TableBody>*/}
-                {/*            </Table>*/}
-                {/*        </TableContainer>*/}
-                {/*}*/}
+                }
             </Container>
 
+            <Box display="flex" justifyContent="center" alignItems="center">
+                <Pagination count={posts.length}/>
+            </Box>
         </>
     )
 }
 
 export default Posts;
+
+

@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import {Select} from "@mui/material";
 import {useTranslation} from "react-i18next";
 import {useEffect} from "react";
-import {getProducts} from "../api/productApi";
+import {getProducts} from "../api/postApi";
 
 export default () => {
     const {i18n} = useTranslation();
