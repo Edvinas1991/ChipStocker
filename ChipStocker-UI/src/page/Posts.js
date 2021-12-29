@@ -1,10 +1,11 @@
-import {useEffect, useState} from "react";
+import {Fragment, useEffect, useState} from "react";
 import {getPosts} from "../api/postApi";
 import {Box, CircularProgress, Container, Pagination} from "@mui/material";
 import {useDispatch} from "react-redux";
 import {useTranslation} from "react-i18next";
 import Link from "@mui/material/Link";
 import {NavLink} from "react-router-dom";
+import Parser from 'html-react-parser';
 
 
 const Posts = () => {
@@ -49,10 +50,19 @@ const Posts = () => {
                                             <h3>{post.title}</h3>
                                         </Link>
                                         By {post.author} {post.date}
-                                        <Box sx={{mt: "5px"}}>{post.body}</Box>
+                                        <Box sx={{mt: "5px"}}>
+                                            <div className="content">{Parser(post.body)}</div>
+                                        </Box>
                                     </>
+
+
+
                                 ))}
+
+
                         </div>
+
+
 
                 }
             </Container>

@@ -27,7 +27,7 @@ public class PostController {
 //            @ApiResponse(code = 404, message = "Nepavyko rasti produktu")
 //    })
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<Post> getProducts() {
+    public List<Post> getPosts() {
         return postService.getPosts();
     }
 
@@ -39,19 +39,19 @@ public class PostController {
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody Post post) {
+    public void createPost(@RequestBody Post post) {
         postService.savePost(post);
     }
 
     @PutMapping(consumes = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public void updateProduct(@RequestBody Post post) {
+    public void updatePost(@RequestBody Post post) {
         postService.savePost(post);
     }
 
     @DeleteMapping(POST)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable(ID_VARIABLE) UUID id) {
+    public void deletePost(@PathVariable(ID_VARIABLE) UUID id) {
         postService.deletePost(id);
     }
 

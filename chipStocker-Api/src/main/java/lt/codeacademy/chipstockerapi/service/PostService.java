@@ -32,6 +32,7 @@ public class PostService {
     }
 
     public void savePost(Post post) {
+        post.setDate(LocalTimeService.getSystemTime());
         postRepository.save(post);
     }
 }

@@ -4,17 +4,22 @@ import * as Yup from 'yup';
 import Container from "@mui/material/Container";
 import '../../style.css'
 import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css';
+import {addPost} from "../../api/postApi";
+import {useState} from "react";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string()
         .required(),
     category: Yup.string()
         .required(),
-    post: Yup.string()
+    body: Yup.string()
         .required()
 });
 
 export default () => {
+    const [response, setResponse] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     return (
         <>
@@ -22,15 +27,20 @@ export default () => {
             <Formik initialValues={{
                 title: '',
                 category: '',
-                post: ''
+                body: '',
+                author:'Admin'
+
             }} onSubmit={(values, helpers) => {
                 console.log('Values ', values);
                 console.log('Helpers ', helpers);
 
-                // helpers.setSubmitting(true);
-                // setTimeout(() => {
-                //     helpers.setSubmitting(false);
-                // }, 5000);
+                addPost(values)
+                    .then(({data}) => setResponse(data))
+                    .catch((error) => console.log(error))
+                    .finally(() => {
+                        helpers.setSubmitting(false);
+
+                    });
 
             }}
                     validationSchema={validationSchema}>
@@ -63,7 +73,7 @@ export default () => {
 
                                     <Field
 
-                                        name="post">
+                                        name="body">
                                         {({field}) =>
                                             <ReactQuill style={{height: "200px"}
                                             } value={field.value} onChange={field.onChange(field.name)}

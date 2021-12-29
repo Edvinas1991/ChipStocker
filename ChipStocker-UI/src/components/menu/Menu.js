@@ -3,16 +3,14 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import DraftsIcon from '@mui/icons-material/Drafts';
 import SendIcon from '@mui/icons-material/Send';
 import Divider from "@mui/material/Divider";
 import HomeIcon from '@mui/icons-material/Home';
 import SportsHandballIcon from '@mui/icons-material/SportsHandball';
 import {NavLink} from "react-router-dom";
-import {Battery20} from "@mui/icons-material";
 import FlightIcon from '@mui/icons-material/Flight';
 import CableIcon from '@mui/icons-material/Cable';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 export default function NestedList() {
 
@@ -29,10 +27,6 @@ export default function NestedList() {
 
     return (
         <>
-
-
-
-
             <List
                 sx={{width: '100%', maxWidth: 360, bgcolor: '#8a91d5', marginTop: '150px'}}
                 component="nav">
@@ -88,33 +82,12 @@ export default function NestedList() {
                 </ListItemButton>
                 <ListItemButton>
                     <ListItemIcon>
-                        <AccountBalanceIcon style={{ color: "white" }}/>
+                        <WorkspacesIcon style={{ color: "white" }}/>
                     </ListItemIcon>
-                    <ListItemText primary="Crypto" primaryTypographyProps={{ style: secondTextStyle}}/>
+                    <ListItemText primary="Others" primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
-{/*test*/}
                 <Divider sx={{mt: "20px"}}/>
-                <ListItemButton component={NavLink} to="/login">
-                    <ListItemIcon>
-                        <AccountBalanceIcon style={{ color: "white" }}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Login" primaryTypographyProps={{ style: secondTextStyle}}/>
-                </ListItemButton>
-
-                <ListItemButton component={NavLink} to="/createpost">
-                    <ListItemIcon>
-                        <AccountBalanceIcon style={{ color: "white" }}/>
-                    </ListItemIcon>
-                    <ListItemText primary="Create" primaryTypographyProps={{ style: secondTextStyle}}/>
-                </ListItemButton>
-
-
             </List>
-
-
-
-
-
         </>
     );
 }

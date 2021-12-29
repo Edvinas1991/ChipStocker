@@ -25,6 +25,7 @@ public class CommentService {
     }
 
     public void saveComment(Comment comment) {
+        comment.setDate(LocalTimeService.getSystemTime());
         commentRepository.save(comment);
     }
 

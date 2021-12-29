@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 
+const About = () => {
 
-class RichTextEditor extends Component {
+    return (
+        <>
+            About
 
-
-    render() {
-        return (
-           <>
-               About
-           </>
-        );
-    }
+        </>
+    )
 }
 
-export default RichTextEditor;
+export default About;

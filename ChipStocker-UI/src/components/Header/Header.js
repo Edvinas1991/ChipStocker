@@ -13,17 +13,16 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import LanguageSwitcher from "../../languageSwitcher/LanguageSwitcher";
 import {NavLink, useNavigate} from "react-router-dom";
-import SendIcon from "@mui/icons-material/Send";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
 import {removeUser} from "../../store/slice/userSlice";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {Button} from "@mui/material";
 
 export default () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const user = useSelector(state => state.user.user);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -48,11 +47,25 @@ export default () => {
                 <Typography variant="h6" color="Black" noWrap sx={{flexGrow: 1}}>
                 </Typography>
                 <nav>
-                    <div style={{color: "black"}}>Edvinas Varanauskas</div>
+
+
+
+                    {!user &&
+                        <Button component={NavLink} to="/login">Login</Button>
+                    }
+
+
                 </nav>
-                <IconButton onClick={handleClick} size="small" sx={{ml: 2}}>
-                    <Avatar sx={{width: 32, height: 32}}>M</Avatar>
-                </IconButton>
+
+
+                {user
+                    &&
+                <>
+                    <IconButton onClick={handleClick} size="small" sx={{ml: 2}}>
+                        <Avatar sx={{width: 32, height: 32}}>M</Avatar>
+                    </IconButton>
+                </>
+                }
             </Toolbar>
             <Menu
                 anchorEl={anchorEl}
@@ -89,25 +102,46 @@ export default () => {
                 anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             >
 
+                {user
+                &&
+                <>
+                    <MenuItem>
+                        <Avatar/> {user.username}
+                    </MenuItem>
+                    <Divider/>
 
-                <MenuItem>
-                    <Avatar/> Profile
-                </MenuItem>
-                <Divider/>
+                    {
+                        user.roles.includes('ADMIN') &&
+<>
+    <MenuItem component={NavLink} to="/users/registration" >
+        <ListItemIcon>
+            <PersonAddIcon fontSize="small"/>
+        </ListItemIcon>
+        Add new user
+    </MenuItem>
 
 
-                <MenuItem component={NavLink} to="/users/registration" >
-                    <ListItemIcon>
-                        <PersonAddIcon fontSize="small"/>
-                    </ListItemIcon>
-                    Add new user
-                </MenuItem>
-                <MenuItem component={NavLink} to="/createpost" >
-                    <ListItemIcon >
-                        <PostAddIcon fontSize="small"/>
-                    </ListItemIcon>
-                    Add new post
-                </MenuItem>
+    <MenuItem component={NavLink} to="/createpost" >
+        <ListItemIcon >
+            <PostAddIcon fontSize="small"/>
+        </ListItemIcon>
+        Add new post
+    </MenuItem>
+</>
+
+                    }
+                </>
+                }
+
+
+
+
+
+
+
+
+
+
 
 
 

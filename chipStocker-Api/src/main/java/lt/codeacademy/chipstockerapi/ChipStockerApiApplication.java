@@ -1,6 +1,5 @@
 package lt.codeacademy.chipstockerapi;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

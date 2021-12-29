@@ -62,6 +62,7 @@
     ]
   },
   "devDependencies": {
-    "@aeaton/react-prosemirror": "^2.0.3"
+    "@aeaton/react-prosemirror": "^2.0.3",
+    "html-react-parser": "^1.4.4"
   }
 }
