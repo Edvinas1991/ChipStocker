@@ -1,8 +1,11 @@
 package lt.codeacademy.chipstockerapi.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lt.codeacademy.chipstockerapi.entity.Comment;
 import lt.codeacademy.chipstockerapi.service.CommentService;
-import lt.codeacademy.chipstockerapi.service.LocalTimeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -12,7 +15,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping(COMMENTS)
-//@Api(tags = "Eshop Product controller")
+@Api(tags = "Comment controller")
 public class CommentController {
     private final CommentService commentService;
 
@@ -20,12 +23,12 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    //    @ApiOperation(value = "Gauti visus produktus", tags = "getProducts", httpMethod = "GET")
-//    @ApiResponses(value = {
-//            @ApiResponse(code = 200, message = "Duomenys sekmingai uzkrauti"),
-//            @ApiResponse(code = 403, message = "Vartotojas neturi teisiu"),
-//            @ApiResponse(code = 404, message = "Nepavyko rasti produktu")
-//    })
+    @ApiOperation(value = "Gauti visus produktus", tags = "getProducts", httpMethod = "GET")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Duomenys sekmingai uzkrauti"),
+            @ApiResponse(code = 403, message = "Vartotojas neturi teisiu"),
+            @ApiResponse(code = 404, message = "Nepavyko rasti produktu")
+    })
 
 
     @GetMapping(value = COMMENT, produces = APPLICATION_JSON_VALUE)
@@ -45,6 +48,5 @@ public class CommentController {
     public void deleteComment(@PathVariable(ID_VARIABLE) UUID id) {
         commentService.deleteComment(id);
     }
-
 
 }
