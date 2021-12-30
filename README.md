@@ -1,5 +1,16 @@
-# ChipStocker
+# Project name 
 
-ChipStocker-UI run
+ChipStocker
 
-**npm start**
+# **Project Technology**
+
+ Frontend React
+ 
+ Backend Java
+ 
+ Database PostgreSQL
+
+
+# ChipStocker-UI run
+
+npm start
