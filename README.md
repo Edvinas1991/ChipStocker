@@ -5,7 +5,9 @@ ChipStocker
 # **Project Technology**
 
  Frontend React
+ 
  Backend Java
+ 
  Database PostgreSQL
 
 
