@@ -7,7 +7,7 @@ import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {addUser} from "../../store/slice/userSlice";
 import {useNavigate} from "react-router-dom";
-
+import {Translation} from "react-i18next";
 
 export default () => {
     const [error, setError] = useState(false);
@@ -18,7 +18,6 @@ export default () => {
         username: Yup.string().required(),
         password: Yup.string().required()
     });
-
 
     const onLogin = (loginData, helpers) => {
         console.log(loginData);
@@ -37,7 +36,10 @@ export default () => {
     }
 
     return (
-        <>
+
+        <Translation>
+            {(t) =>
+
 
             <div style={{margin: '200px'}}>
                 <Formik
@@ -53,31 +55,33 @@ export default () => {
                             {
                                 error &&
                                 <Alert severity="error" sx={{width: '100%'}}>
-                                    Bad credentials
+                                    {t('bad_credentials')}
                                 </Alert>
                             }
                             <Form>
                                 <TextFieldInput
                                     error={props.touched.username && !!props.errors.username}
                                     fieldName="username"
-                                    label="Username"
+                                    label= {t('username')}
                                 />
                                 <TextFieldInput
                                     error={props.touched.password && !!props.errors.password}
                                     fieldName="password"
-                                    label="Password"
+                                    label={t('password')}
                                     type="password"/>
                                 <Button
                                     variant="outlined"
                                     type="submit"
                                     disabled={props.isSubmitting}>
-                                    Login</Button>
+                                    {t('login_buttom')}
+                                </Button>
                             </Form>
                         </Container>
                     )}
                 </Formik>
             </div>
-        </>
+            }
+        </Translation>
 
     )
 }

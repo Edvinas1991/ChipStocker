@@ -12,6 +12,8 @@ import FlightIcon from '@mui/icons-material/Flight';
 import CableIcon from '@mui/icons-material/Cable';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import {Translation} from "react-i18next";
+
 export default function NestedList() {
 
     const mainTextStyle = {
@@ -26,12 +28,16 @@ export default function NestedList() {
     };
 
     return (
+
+        <Translation>
+            {(t) =>
+
         <>
             <List
                 sx={{width: '100%', maxWidth: 360, bgcolor: '#8a91d5', marginTop: '150px'}}
                 component="nav">
                 <ListItemText primaryTypographyProps={{ style: mainTextStyle}} >
-                       Menu
+                    {t('menu')}
                 </ListItemText>
                 <Divider />
 
@@ -39,55 +45,57 @@ export default function NestedList() {
                     <ListItemIcon>
                         <HomeIcon style={{ color: "white" }}/>
                     </ListItemIcon>
-                    <ListItemText primary="Home" primaryTypographyProps={{ style: secondTextStyle}}/>
+                    <ListItemText primary= {t('home')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
 
                 <ListItemButton component={NavLink} to="/about">
                     <ListItemIcon>
                         <SendIcon style={{ color: "white" }}/>
                     </ListItemIcon>
-                    <ListItemText primary="About" primaryTypographyProps={{ style: secondTextStyle}}/>
+                    <ListItemText primary= {t('about')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
                 <ListItemButton component={NavLink} to="/contact">
                     <ListItemIcon style={{ color: "white" }}>
                         <AccountBalanceIcon/>
                     </ListItemIcon>
-                    <ListItemText primary="Contact" primaryTypographyProps={{ style: secondTextStyle}}/>
+                    <ListItemText primary= {t('contact')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
             </List>
             <List
                 sx={{width: '100%', maxWidth: 360, bgcolor: '#8a91d5', marginTop: '10px'}}
                 component="nav">
                 <ListItemText primaryTypographyProps={{ style: mainTextStyle}} >
-                    Topics
+                    {t('topics')}
                 </ListItemText>
                 <Divider />
                 <ListItemButton>
                     <ListItemIcon>
                         <CableIcon style={{ color: "white" }}/>
                     </ListItemIcon>
-                    <ListItemText primary="Electronics" primaryTypographyProps={{ style: secondTextStyle}}/>
+                    <ListItemText primary= {t('electronics')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
                 <ListItemButton>
                     <ListItemIcon>
                         <FlightIcon style={{ color: "white" }}/>
                     </ListItemIcon>
-                    <ListItemText primary="Travel" primaryTypographyProps={{ style: secondTextStyle}}/>
+                    <ListItemText primary= {t('travels')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
                 <ListItemButton>
                     <ListItemIcon>
                         <SportsHandballIcon style={{ color: "white" }}/>
                     </ListItemIcon>
-                    <ListItemText primary="Sport" primaryTypographyProps={{ style: secondTextStyle}}/>
+                    <ListItemText primary= {t('sports')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
                 <ListItemButton>
                     <ListItemIcon>
                         <WorkspacesIcon style={{ color: "white" }}/>
                     </ListItemIcon>
-                    <ListItemText primary="Others" primaryTypographyProps={{ style: secondTextStyle}}/>
+                    <ListItemText primary={t('others')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
                 <Divider sx={{mt: "20px"}}/>
             </List>
         </>
+            }
+        </Translation>
     );
 }
