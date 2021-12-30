@@ -39,8 +39,6 @@ export default () => {
 
         <Translation>
             {(t) =>
-
-
             <div style={{margin: '200px'}}>
                 <Formik
                     initialValues={{
@@ -82,6 +80,5 @@ export default () => {
             </div>
             }
         </Translation>
-
     )
 }

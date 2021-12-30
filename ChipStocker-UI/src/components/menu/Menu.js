@@ -68,26 +68,26 @@ export default function NestedList() {
                     {t('topics')}
                 </ListItemText>
                 <Divider />
-                <ListItemButton>
+                <ListItemButton component={NavLink} to="/electronics">
                     <ListItemIcon>
                         <CableIcon style={{ color: "white" }}/>
                     </ListItemIcon>
                     <ListItemText primary= {t('electronics')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
-                <ListItemButton>
+                <ListItemButton component={NavLink} to="/travels">
                     <ListItemIcon>
                         <FlightIcon style={{ color: "white" }}/>
                     </ListItemIcon>
                     <ListItemText primary= {t('travels')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
-                <ListItemButton>
+                <ListItemButton component={NavLink} to="/sports">
                     <ListItemIcon>
                         <SportsHandballIcon style={{ color: "white" }}/>
                     </ListItemIcon>
                     <ListItemText primary= {t('sports')} primaryTypographyProps={{ style: secondTextStyle}}/>
                 </ListItemButton>
-                <ListItemButton>
-                    <ListItemIcon>
+                <ListItemButton component={NavLink} to="/others">
+                    <ListItemIcon >
                         <WorkspacesIcon style={{ color: "white" }}/>
                     </ListItemIcon>
                     <ListItemText primary={t('others')} primaryTypographyProps={{ style: secondTextStyle}}/>

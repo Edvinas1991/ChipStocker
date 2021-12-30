@@ -9,12 +9,8 @@ const buildStore = () => {
         },
         middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
         preloadedState: {
-            // cart: loadCartFromLocalStorage()
         }
     });
-
-    // subscribeToStore(store);
-
     return store;
 }
 

@@ -12,7 +12,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {useSelector} from "react-redux";
 
-
 const Post = () => {
     const user = useSelector(state => state.user.user);
     const [post, setPost] = useState([]);
@@ -44,7 +43,6 @@ const Post = () => {
                 navigation('/');
             })
     };
-
     return (
         <>
             <Container maxWidth="md" sx={{my: 2}}>
@@ -59,7 +57,7 @@ const Post = () => {
 
                                 <Stack direction="row" alignItems="center" gap={1} sx={{mt: "15px"}}>
                                     <>
-                                        By {post.author} {post.date}
+                                         {post.author} {post.date}
                                         {user &&
                                         <>
                                             {
@@ -87,7 +85,6 @@ const Post = () => {
                                 </Box>
                                 <Comment postid={postId}/>
                             </>
-
                 }
             </Container>
 

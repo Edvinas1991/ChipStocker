@@ -6,6 +6,4 @@ const deletePost = (id) => HTTP.delete('/posts/'+id);
 const updatePost = (id,data) => HTTP.put('/posts/'+id,data);
 const addPost = (data) => HTTP.post('/posts',data);
 
-
-
 export {getPosts,getPost,deletePost,addPost,updatePost}

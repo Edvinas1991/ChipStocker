@@ -10,14 +10,13 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from '@mui/icons-material/Edit';
 
-const Posts = () => {
+const Posts = ({category}) => {
     const user = useSelector(state => state.user.user);
     const [posts, setPosts] = useState([]);
     const [pageSize, setPageSize] = useState();
     const dispatcher = useDispatch();
     const {t} = useTranslation();
     const [loading, setLoading] = useState(true);
-
 
 
     useEffect(() => {
@@ -28,7 +27,6 @@ const Posts = () => {
                 setLoading(false);
             });
     }, []);
-
 
 
     return (
@@ -45,32 +43,43 @@ const Posts = () => {
                                 posts.map((post) => (
                                     <>
 
-                                        <Link component={NavLink} to={"/post/" + post.id}>
-                                            <h3>{post.title}</h3>
-                                        </Link>
+                                        {category
+                                            ?
+                                            <>
+                                                {post.category === category
+                                                &&
+                                                <>
+                                                    <Link component={NavLink} to={"/post/" + post.id}>
+                                                        <h3>{post.title}</h3>
+                                                    </Link>
+                                                     {post.author} {post.date}
 
+                                                    <Box sx={{mt: "5px"}}>
+                                                        <div className="content">{Parser(post.body)}</div>
+                                                    </Box>
+                                                </>
+                                                }
+                                            </>
+                                            :
+                                            <>
+                                                <Link component={NavLink} to={"/post/" + post.id}>
+                                                    <h3>{post.title}</h3>
+                                                </Link>
+                                                {post.author} {post.date}
 
-                                        By {post.author} {post.date}
-
-
-
-
-
-                                        <Box sx={{mt: "5px"}}>
-                                            <div className="content">{Parser(post.body)}</div>
-                                        </Box>
+                                                <Box sx={{mt: "5px"}}>
+                                                    <div className="content">{Parser(post.body)}</div>
+                                                </Box>
+                                            </>
+                                        }
                                     </>
                                 ))}
                         </div>
                 }
             </Container>
-            <Box display="flex" justifyContent="center" alignItems="center">
-                <Pagination count={posts.length}/>
-            </Box>
         </>
     )
 }
-
 export default Posts;
 
 

@@ -21,9 +21,15 @@ export default () => {
                 minHeight: 600
             }}>
                 <Routes>
-                    <Route path="/" element={<Posts/>}/>
+                    <Route path="/" element={<Posts />}/>
                     <Route path="/contact" element={<Contact/>}/>
                     <Route path="/about" element={<About/>}/>
+
+                    <Route path="/electronics" element={<Posts category={"Electronics"}/>}/>
+                    <Route path="/travels" element={<Posts category={"Travels"}/>}/>
+                    <Route path="/sports" element={<Posts category={"Sports"}/>}/>
+                    <Route path="/others" element={<Posts category={"Others"}/>}/>
+
                     <Route path="/post/:postId" element={<Post/>}/>
                     <Route path="/login" element={<Login/>}/>
 
