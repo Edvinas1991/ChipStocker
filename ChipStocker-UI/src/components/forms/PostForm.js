@@ -5,8 +5,10 @@ import Container from "@mui/material/Container";
 import '../../style.css'
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
-import {addPost} from "../../api/postApi";
-import {useState} from "react";
+import {addPost, deletePost, getPost, updatePost} from "../../api/postApi";
+import {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -20,26 +22,56 @@ const validationSchema = Yup.object().shape({
 export default () => {
     const [response, setResponse] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [post, setPost] = useState([]);
+
+    const user = useSelector(state => state.user.user);
+    const {postId} = useParams();
+    const navigation = useNavigate();
+    const [title, setTitle] = useState([""]);
+    const [category, setcategory] = useState([""]);
+    const [body, setbody] = useState([""]);
+    const [id, setId] = useState([null]);
+
+
+
+
+    useEffect(() => {
+
+            if (postId) {
+                console.log('cia!!')
+                getPost(postId)
+                    .then(({data}) => {
+                        setPost(JSON.stringify(data));
+                    })
+                    .catch((error) => console.log(error))
+                    .finally(() =>
+                        setLoading(false));
+console.log("debug "+ post);
+            }
+
+        }
+        , []);
 
     return (
         <>
             <h3>Post form</h3>
             <Formik initialValues={{
-                title: '',
-                category: '',
-                body: '',
-                author:'Admin'
+                title: "",
+                category: "",
+                body: "",
+                author: user.username,
+                postId: "",
+                id: ""
 
             }} onSubmit={(values, helpers) => {
                 console.log('Values ', values);
                 console.log('Helpers ', helpers);
-
                 addPost(values)
                     .then(({data}) => setResponse(data))
                     .catch((error) => console.log(error))
                     .finally(() => {
                         helpers.setSubmitting(false);
-
+                        navigation("/");
                     });
 
             }}
@@ -80,13 +112,13 @@ export default () => {
                                                         modules={{
                                                             toolbar: {
                                                                 container: [
-                                                                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                                                                    [{'header': [1, 2, 3, 4, 5, 6, false]}],
                                                                     ['bold', 'italic', 'underline'],
-                                                                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                                                                    [{ 'align': [] }],
+                                                                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                                                                    [{'align': []}],
                                                                     ['image'],
                                                                     ['clean'],
-                                                                    [{ 'color': [] }]
+                                                                    [{'color': []}]
                                                                 ]
                                                             }
                                                         }}

@@ -31,6 +31,10 @@ export default () => {
                         <Route path="/createpost" element={<PostForm/>}/>
                     </Route>
 
+                    <Route path="/createpost/:postId" element={<SecuredRoute roles={['ADMIN']}/>}>
+                        <Route path="/createpost/:postId" element={<PostForm/>}/>
+                    </Route>
+
                     <Route path="/users/registration" element={<SecuredRoute roles={['ADMIN']}/>}>
                         <Route path="/users/registration" element={<RegistrationForm/>}/>
                     </Route>
